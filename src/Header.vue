@@ -34,7 +34,7 @@ const closeMenu = (): void => {
   <header
     class="sticky top-0 left-0 w-full z-30 flex items-center justify-between p-5 md:p-8 lg:px-20 lg:py-12 bg-black text-white"
   >
-    <h1 class="text-xl font-bold">Marca</h1>
+    <h1 class="font-bold">Marca</h1>
 
     <div class="flex items-center gap-6">
       <ul class="hidden md:flex gap-10 list-none">
