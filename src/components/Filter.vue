@@ -1,32 +1,39 @@
 <script setup lang="ts">
-import { categoriesMock } from '@/mocks/categories'
-import { sneakersMock } from '@/mocks/sneakers'
 import type { Category } from '@/types/Category'
-import { ref } from 'vue'
+import type { Sneaker } from '@/types/Sneaker'
 
-const categories: Category[] = [{ id: 0, name: 'Todos' }, ...categoriesMock]
+defineProps<{
+  filteredSneakers: Sneaker[]
+  categories: Category[]
+  activeCategory: number
+}>()
 
-const activeCategory = ref(0)
-const counter: number = sneakersMock.length
+const emit = defineEmits<{
+  'update:activeCategory': [value: number]
+}>()
 </script>
 
 <template>
   <div
-    class="flex flex-row items-center justify-between bg-[#1a1a1a] text-white p-5 lg:px-20 lg:py-12"
+    class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0 bg-[#1a1a1a] text-white p-5 md:p-8 lg:px-20 lg:py-12"
   >
     <div>
-      <h1>Todos os produtos</h1>
-      <p class="text-[#a0a0a0]">
-        {{ counter != 1 ? `${counter} produtos disponíveis` : `1 produto disponível` }}
+      <h1 class="text-xl lg:text-2xl font-bold">Todos os produtos</h1>
+      <p class="text-[#a0a0a0] text-sm lg:text-base">
+        {{
+          filteredSneakers.length != 1
+            ? `${filteredSneakers.length} produtos disponíveis`
+            : `1 produto disponível`
+        }}
       </p>
     </div>
-    <div class="flex gap-4 overflow-x-auto pb-2">
+    <div class="flex gap-3 lg:gap-4 overflow-x-auto pb-2 w-full lg:w-auto">
       <button
         v-for="category in categories"
         :key="category.id"
-        @click="activeCategory = category.id"
+        @click="emit('update:activeCategory', category.id)"
         :class="[
-          'text-white px-8 py-4 h-min rounded-2xl transition-colors whitespace-nowrap cursor-pointer',
+          'text-white px-6 lg:px-8 py-3 lg:py-4 text-sm lg:text-base h-min rounded-2xl transition-colors whitespace-nowrap cursor-pointer',
           activeCategory === category.id ? 'bg-[#ff6b35]' : 'bg-[#2a2a2a] hover:bg-[#ff6b35]',
         ]"
       >
