@@ -43,7 +43,9 @@ const formatPrice = (value: number) => {
       </div>
       <div class="flex justify-between items-center mt-4">
         <div class="flex gap-2">
-          <p class="line-through text-gray-400">{{ formatPrice(sneaker.originalPrice) }}</p>
+          <p class="line-through text-gray-400" v-if="sneaker.originalPrice != sneaker.price">
+            {{ formatPrice(sneaker.originalPrice) }}
+          </p>
           <p class="font-semibold">{{ formatPrice(sneaker.price) }}</p>
         </div>
         <button

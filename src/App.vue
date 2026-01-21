@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Footer from './Footer.vue'
 import Header from './Header.vue'
 import Card from './components/Card.vue'
+import { sneakersMock } from './mocks/sneakers'
 import type { Sneaker } from './types/Sneaker'
 
-const sneakers = ref<Sneaker[]>([
-  {
-    name: 'Air Max Velocity',
-    originalPrice: 1229.0,
-    price: 899.0,
-    src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop',
-    category: {
-      name: 'RUNNING',
-    },
-    flag: {
-      name: 'Novo',
-      bg_color: '#00d4ff',
-    },
-  },
-])
+const sneakers = ref<Sneaker[]>([])
+onMounted(() => {
+  sneakers.value = sneakersMock
+})
 </script>
 
 <template>
@@ -27,7 +17,7 @@ const sneakers = ref<Sneaker[]>([
     <Header />
     <main class="grow bg-black p-5 md:p-8 lg:px-20 lg:py-12">
       <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
-        <Card v-for="sneaker in sneakers" :key="sneaker.name" :sneaker="sneaker" />
+        <Card v-for="sneaker in sneakers" :key="sneaker.id" :sneaker="sneaker" />
       </div>
     </main>
     <Footer />
