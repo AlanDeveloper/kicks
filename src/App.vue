@@ -10,6 +10,7 @@ const sneakers = ref<Sneaker[]>([
     name: 'Air Max Velocity',
     originalPrice: 1229.0,
     price: 899.0,
+    src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop',
     category: {
       name: 'RUNNING',
     },

@@ -9,6 +9,7 @@ export interface Flag {
 
 export interface Sneaker {
   name: string
+  src: string
   originalPrice: number
   price: number
   category: Category
