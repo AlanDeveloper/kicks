@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="bg-black text-[#a0a0a0] p-5 md:p-8 lg:px-20 lg:py-12">
+  <footer class="bg-black text-[#a0a0a0] p-5 md:p-8 lg:px-20 lg:py-12">
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8 lg:gap-12 mb-8 md:mb-12"
     >
@@ -149,7 +149,7 @@
     <div class="pt-5 text-center border-t border-white/5">
       <p>© 2026 Marca. Todos os direitos reservados.</p>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style scoped></style>
