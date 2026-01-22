@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer class="bg-black text-[#a0a0a0] p-5 md:p-8 lg:px-20 lg:py-12">
+  <footer class="bg-black text-[#a0a0a0] p-5 md:p-8 lg:px-20 lg:py-12" id="contacts">
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8 lg:gap-12 mb-8 md:mb-12"
     >

@@ -8,6 +8,7 @@ import { sneakersMock } from './mocks/sneakers'
 import { categoriesMock } from './mocks/categories'
 import type { Category } from './types/Category'
 import type { Sneaker } from './types/Sneaker'
+import { onMounted } from 'vue'
 
 const categories: Category[] = [{ id: 0, name: 'Todos' }, ...categoriesMock]
 const activeCategory = ref(0)
@@ -15,6 +16,25 @@ const activeCategory = ref(0)
 const filteredSneakers: ComputedRef<Sneaker[]> = computed(() => {
   if (activeCategory.value === 0) return sneakersMock
   return sneakersMock.filter((sneaker) => sneaker.category.id === activeCategory.value)
+})
+
+onMounted(() => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute('href'))
+      if (target) {
+        const headerOffset = 80
+        const elementPosition = target.offsetTop
+        const offsetPosition = elementPosition - headerOffset
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        })
+      }
+    })
+  })
 })
 </script>
 
@@ -35,7 +55,7 @@ const filteredSneakers: ComputedRef<Sneaker[]> = computed(() => {
           <Card v-for="sneaker in filteredSneakers" :key="sneaker.id" :sneaker="sneaker" />
         </div>
       </div>
-      <div class="bg-[#1a1a1a] text-white" id="#about">
+      <div class="bg-[#1a1a1a] text-white" id="about">
         <div class="p-5 py-15 md:p-8 lg:px-20 lg:py-40 flex flex-col lg:flex-row gap-5 lg:gap-8">
           <div class="flex flex-col gap-5 flex-1">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold">Marca</h1>

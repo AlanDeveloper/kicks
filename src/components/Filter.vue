@@ -15,6 +15,7 @@ const emit = defineEmits<{
 
 <template>
   <div
+    id="products"
     class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0 bg-[#1a1a1a] text-white p-5 md:p-8 lg:px-20 lg:py-12"
   >
     <div>
