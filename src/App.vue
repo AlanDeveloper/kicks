@@ -61,13 +61,13 @@ useSmoothScroll()
         :categories="categories"
         v-model:activeCategory="activeCategory"
       />
-      <div class="grow bg-black p-5 md:p-8 lg:px-20 lg:py-12">
+      <section class="grow bg-black p-5 md:p-8 lg:px-20 lg:py-12">
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center"
         >
           <Card v-for="sneaker in filteredSneakers" :key="sneaker.id" :sneaker="sneaker" />
         </div>
-      </div>
+      </section>
       <AboutSection />
     </main>
     <Footer :categories="categories" />
