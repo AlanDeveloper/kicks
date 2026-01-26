@@ -59,8 +59,7 @@ useSmoothScroll()
       <Filter
         :filteredSneakers="filteredSneakers"
         :categories="categories"
-        :activeCategory="activeCategory"
-        @update:activeCategory="activeCategory = $event"
+        v-model:activeCategory="activeCategory"
       />
       <div class="grow bg-black p-5 md:p-8 lg:px-20 lg:py-12">
         <div
