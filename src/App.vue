@@ -10,7 +10,7 @@ import type { Category } from './types/Category'
 import type { Sneaker } from './types/Sneaker'
 import { onMounted } from 'vue'
 
-const categories: Category[] = [{ id: 0, name: 'Todos' }, ...categoriesMock]
+const categories: Category[] = categoriesMock
 const activeCategory = ref(0)
 
 const filteredSneakers: ComputedRef<Sneaker[]> = computed(() => {
@@ -91,7 +91,7 @@ onMounted(() => {
         </div>
       </div>
     </main>
-    <Footer />
+    <Footer :categories="categories" />
   </div>
 </template>
 

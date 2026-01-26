@@ -30,6 +30,15 @@ const emit = defineEmits<{
     </div>
     <div class="flex gap-3 lg:gap-4 overflow-x-auto pb-2 w-full lg:w-auto">
       <button
+        @click="emit('update:activeCategory', 0)"
+        :class="[
+          'text-white px-6 lg:px-8 py-3 lg:py-4 text-sm lg:text-base h-min rounded-2xl transition-colors whitespace-nowrap cursor-pointer',
+          activeCategory === 0 ? 'bg-[#ff6b35]' : 'bg-[#2a2a2a] hover:bg-[#ff6b35]',
+        ]"
+      >
+        Todos
+      </button>
+      <button
         v-for="category in categories"
         :key="category.id"
         @click="emit('update:activeCategory', category.id)"

@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Category } from './types/Category'
+
+defineProps<{
+  categories: Category[]
+}>()
+</script>
 
 <template>
   <footer class="bg-black text-[#a0a0a0] p-5 md:p-8 lg:px-20 lg:py-12" id="contacts">
@@ -57,89 +63,61 @@
       <div class="md:text-left">
         <h3 class="text-white mb-3">Produtos</h3>
         <ul class="flex flex-col gap-1.25 list-none">
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+          <li v-for="category in categories" :key="category.id">
+            <a
+              href="#"
+              class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
+              >{{ category.name }}</a
             >
           </li>
         </ul>
       </div>
       <div class="md:text-left">
-        <h3 class="text-white mb-3">Produtos</h3>
+        <h3 class="text-white mb-3">Empresa</h3>
         <ul class="flex flex-col gap-1.25 list-none">
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Sobre nós</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Carreiras</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
-            >
-          </li>
-          <li>
-            <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Blog</a
             >
           </li>
         </ul>
       </div>
       <div class="md:text-left">
-        <h3 class="text-white mb-3">Produtos</h3>
+        <h3 class="text-white mb-3">Suporte</h3>
         <ul class="flex flex-col gap-1.25 list-none">
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Central de ajuda</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Rastreamento</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Trocas e devoluções</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Política de Privacidade</a
             >
           </li>
           <li>
             <a href="#" class="hover:text-[#ff6b35] transition-colors duration-300 cursor-pointer"
-              >teste</a
+              >Termos de Uso</a
             >
           </li>
         </ul>
