@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, type ComputedRef } from 'vue'
+import { computed, onBeforeUnmount, ref, type ComputedRef } from 'vue'
 import Footer from './Footer.vue'
 import Header from './Header.vue'
 import Card from './components/Card.vue'
@@ -18,24 +18,35 @@ const filteredSneakers: ComputedRef<Sneaker[]> = computed(() => {
   return sneakersMock.filter((sneaker) => sneaker.category.id === activeCategory.value)
 })
 
-onMounted(() => {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+const useSmoothScroll = (offset = 80) => {
+  const handleClick = (e: Event) => {
+    const anchor = e.currentTarget as HTMLAnchorElement
+    const href = anchor.getAttribute('href')
+    if (href?.startsWith('#')) {
       e.preventDefault()
-      const target = document.querySelector(this.getAttribute('href'))
+      const target = document.querySelector(href)
       if (target) {
-        const headerOffset = 80
-        const elementPosition = target.offsetTop
-        const offsetPosition = elementPosition - headerOffset
-
+        const elementPosition = (target as HTMLElement).offsetTop
         window.scrollTo({
-          top: offsetPosition,
+          top: elementPosition - offset,
           behavior: 'smooth',
         })
       }
-    })
+    }
+  }
+
+  onMounted(() => {
+    const anchors = document.querySelectorAll('a[href^="#"]')
+    anchors.forEach((anchor) => anchor.addEventListener('click', handleClick))
   })
-})
+
+  onBeforeUnmount(() => {
+    const anchors = document.querySelectorAll('a[href^="#"]')
+    anchors.forEach((anchor) => anchor.removeEventListener('click', handleClick))
+  })
+}
+
+useSmoothScroll()
 </script>
 
 <template>
