@@ -6,6 +6,7 @@
       class="absolute inset-0 bg-linear-to-br from-orange-500/70 via-orange-600/50 to-black/60 z-0"
     ></div>
     <img
+      loading="lazy"
       src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=1600&h=900&fit=crop"
       alt="Background"
       class="absolute inset-0 w-full h-full object-cover -z-10"

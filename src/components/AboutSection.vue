@@ -28,6 +28,7 @@
         </div>
       </div>
       <img
+        loading="lazy"
         src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=800&h=1000&fit=crop"
         alt="Nossa loja"
         class="w-full lg:w-[400px] xl:w-[500px] h-64 sm:h-80 lg:h-[500px] object-cover rounded-2xl flex-shrink-0"

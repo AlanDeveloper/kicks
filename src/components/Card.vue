@@ -27,6 +27,7 @@ const formatPrice = (value: number) => {
 
     <div class="overflow-hidden">
       <img
+        loading="lazy"
         :src="sneaker.src"
         alt="Air Max Velocity"
         class="w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
