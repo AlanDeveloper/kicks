@@ -48,12 +48,14 @@ const useSmoothScroll = (offset = 80) => {
   })
 }
 
+const cartCount = ref(0)
+
 useSmoothScroll()
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col">
-    <Header />
+    <Header :cartCount="cartCount" />
     <main>
       <HeroSection />
       <Filter
@@ -65,7 +67,12 @@ useSmoothScroll()
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center"
         >
-          <Card v-for="sneaker in filteredSneakers" :key="sneaker.id" :sneaker="sneaker" />
+          <Card
+            v-for="sneaker in filteredSneakers"
+            :key="sneaker.id"
+            :sneaker="sneaker"
+            v-model:cartCount="cartCount"
+          />
         </div>
       </section>
       <AboutSection />

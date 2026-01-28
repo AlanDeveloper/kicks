@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import type { Sneaker } from '@/types/Sneaker'
 
-defineProps<{
+const props = defineProps<{
   sneaker: Sneaker
+  cartCount: number
+}>()
+
+const emit = defineEmits<{
+  'update:cartCount': [value: number]
 }>()
 
 const formatPrice = (value: number) => {
@@ -10,6 +15,10 @@ const formatPrice = (value: number) => {
     style: 'currency',
     currency: 'BRL',
   })
+}
+
+const addToCart = (): void => {
+  emit('update:cartCount', props.cartCount + 1)
 }
 </script>
 
@@ -52,6 +61,7 @@ const formatPrice = (value: number) => {
         <button
           aria-label="Adicionar ao carrinho"
           class="h-12 w-12 bg-primary rounded-md font-bold hover:bg-[#ff8555] duration-300 transition-all hover:rotate-90 cursor-pointer"
+          @click="addToCart"
         >
           +
         </button>

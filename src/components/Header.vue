@@ -13,7 +13,9 @@ const closeMenu = (): void => {
   document.body.style.overflow = ''
 }
 
-const cartCount = ref(0)
+defineProps<{
+  cartCount: number
+}>()
 </script>
 <template>
   <div
