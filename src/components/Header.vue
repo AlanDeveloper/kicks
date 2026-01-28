@@ -47,9 +47,35 @@ const cartCount = ref(0)
   </aside>
 
   <header
-    class="sticky top-0 left-0 w-full z-30 flex items-center justify-between p-5 md:p-8 lg:px-20 lg:py-12 bg-black text-white"
+    class="sticky top-0 left-0 w-full z-30 flex items-center justify-between p-5 md:p-8 lg:px-20 lg:py-10 bg-black text-white"
   >
-    <h1 class="font-bold">Marca</h1>
+    <h1 class="w-50 lg:w-70">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+        <text
+          x="0"
+          y="30"
+          font-family="'Arial Black', 'Arial Bold', sans-serif"
+          font-size="28"
+          font-weight="900"
+          fill="#fff"
+          letter-spacing="-1"
+        >
+          KICKS
+        </text>
+
+        <text
+          x="0"
+          y="50"
+          font-family="Arial, sans-serif"
+          font-size="11"
+          font-weight="600"
+          fill="#ff6b35"
+          letter-spacing="3"
+        >
+          PREMIUM SNEAKERS
+        </text>
+      </svg>
+    </h1>
 
     <div class="flex items-center gap-6">
       <ul class="hidden md:flex gap-10 list-none">

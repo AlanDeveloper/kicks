@@ -2,7 +2,33 @@
   <section class="bg-secondary text-white" id="about">
     <div class="p-5 py-15 md:p-8 lg:px-20 lg:py-40 flex flex-col lg:flex-row gap-5 lg:gap-8">
       <div class="flex flex-col gap-5 flex-1">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold">Marca</h1>
+        <h1>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <text
+              x="0"
+              y="30"
+              font-family="'Arial Black', 'Arial Bold', sans-serif"
+              font-size="28"
+              font-weight="900"
+              fill="#fff"
+              letter-spacing="-1"
+            >
+              KICKS
+            </text>
+
+            <text
+              x="0"
+              y="50"
+              font-family="Arial, sans-serif"
+              font-size="11"
+              font-weight="600"
+              fill="#ff6b35"
+              letter-spacing="3"
+            >
+              PREMIUM SNEAKERS
+            </text>
+          </svg>
+        </h1>
         <p class="text-secondary-text text-sm md:text-base">
           Somos apaixonados por sneakers e por proporcionar experiências únicas aos nossos clientes.
           Desde 2018, trabalhamos com as melhores marcas do mundo para trazer até você os modelos

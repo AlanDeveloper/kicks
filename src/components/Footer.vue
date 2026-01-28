@@ -12,7 +12,33 @@ defineProps<{
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8 lg:gap-12 mb-8 md:mb-12"
     >
       <div>
-        <h1>Marca</h1>
+        <h1>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <text
+              x="0"
+              y="30"
+              font-family="'Arial Black', 'Arial Bold', sans-serif"
+              font-size="28"
+              font-weight="900"
+              fill="#fff"
+              letter-spacing="-1"
+            >
+              KICKS
+            </text>
+
+            <text
+              x="0"
+              y="50"
+              font-family="Arial, sans-serif"
+              font-size="11"
+              font-weight="600"
+              fill="#ff6b35"
+              letter-spacing="3"
+            >
+              PREMIUM SNEAKERS
+            </text>
+          </svg>
+        </h1>
         <p class="my-4">
           Os melhores sneakers premium do mercado. Autenticidade garantida e entrega para todo o
           Brasil.
@@ -123,7 +149,7 @@ defineProps<{
     </div>
 
     <div class="pt-5 text-center border-t border-white/5">
-      <p>© 2026 Marca. Todos os direitos reservados.</p>
+      <p>© 2026 KICKS. Todos os direitos reservados.</p>
     </div>
   </footer>
 </template>
