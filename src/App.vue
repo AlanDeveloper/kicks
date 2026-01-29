@@ -11,15 +11,12 @@ import { categoriesMock } from './mocks/categories'
 import type { Category } from './types/Category'
 import type { Sneaker } from './types/Sneaker'
 import { onMounted } from 'vue'
-
 const categories: Category[] = categoriesMock
 const activeCategory = ref(0)
-
 const filteredSneakers: ComputedRef<Sneaker[]> = computed(() => {
   if (activeCategory.value === 0) return sneakersMock
   return sneakersMock.filter((sneaker) => sneaker.category.id === activeCategory.value)
 })
-
 const useSmoothScroll = (offset = 80) => {
   const handleClick = (e: Event) => {
     const anchor = e.currentTarget as HTMLAnchorElement
@@ -36,23 +33,18 @@ const useSmoothScroll = (offset = 80) => {
       }
     }
   }
-
   onMounted(() => {
     const anchors = document.querySelectorAll('a[href^="#"]')
     anchors.forEach((anchor) => anchor.addEventListener('click', handleClick))
   })
-
   onBeforeUnmount(() => {
     const anchors = document.querySelectorAll('a[href^="#"]')
     anchors.forEach((anchor) => anchor.removeEventListener('click', handleClick))
   })
 }
-
 const cartCount = ref(0)
-
 useSmoothScroll()
 </script>
-
 <template>
   <div class="min-h-screen flex flex-col">
     <Header :cartCount="cartCount" />
@@ -63,9 +55,9 @@ useSmoothScroll()
         :categories="categories"
         v-model:activeCategory="activeCategory"
       />
-      <section class="grow bg-black p-5 md:p-8 lg:px-20 lg:py-12">
+      <section class="grow bg-black p-6 md:p-10 lg:px-20 lg:py-16">
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6 lg:gap-8 justify-items-center"
         >
           <Card
             v-for="sneaker in filteredSneakers"
@@ -80,5 +72,4 @@ useSmoothScroll()
     <Footer :categories="categories" />
   </div>
 </template>
-
 <style scoped></style>
