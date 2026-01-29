@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { Category } from '../types/Category'
+import { categoriesMock } from '../mocks/categories'
 
-defineProps<{
-  categories: Category[]
-}>()
+const categories: Category[] = categoriesMock
 </script>
 
 <template>

@@ -1,21 +1,15 @@
 <script setup lang="ts">
+import { useCartStore } from '@/stores/CartStore'
 import type { Sneaker } from '@/types/Sneaker'
-const props = defineProps<{
+import { formatPrice } from '@/utils/formatPrice'
+import { ref } from 'vue'
+
+defineProps<{
   sneaker: Sneaker
-  cartCount: number
 }>()
-const emit = defineEmits<{
-  'update:cartCount': [value: number]
-}>()
-const formatPrice = (value: number) => {
-  return value.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
-}
-const addToCart = (): void => {
-  emit('update:cartCount', props.cartCount + 1)
-}
+
+const selectedSize = ref<number | null>(null)
+const cart = useCartStore()
 </script>
 <template>
   <div
@@ -41,16 +35,20 @@ const addToCart = (): void => {
         {{ sneaker.category.name }}
       </p>
       <h2 class="text-lg md:text-xl font-bold mt-1.5 line-clamp-2">{{ sneaker.name }}</h2>
-      <div class="flex gap-2.5 mt-3">
-        <div
-          class="w-5 h-5 rounded-full border-2 border-gray-300 bg-white transition-transform hover:scale-110 cursor-pointer"
-        ></div>
-        <div
-          class="w-5 h-5 rounded-full bg-indigo-400 transition-transform hover:scale-110 cursor-pointer"
-        ></div>
-        <div
-          class="w-5 h-5 rounded-full bg-red-400 transition-transform hover:scale-110 cursor-pointer"
-        ></div>
+      <div class="flex gap-2.5 mt-3 flex-wrap">
+        <button
+          v-for="size in sneaker.size"
+          :key="size"
+          @click="selectedSize = size"
+          class="w-10 h-10 flex items-center justify-center rounded-lg border-2 text-sm font-semibold transition-all cursor-pointer"
+          :class="
+            selectedSize === size
+              ? 'border-primary bg-primary text-white scale-105'
+              : 'border-gray-500 bg-transparent text-gray-200 hover:border-primary hover:text-white hover:scale-110'
+          "
+        >
+          {{ size }}
+        </button>
       </div>
       <div class="flex justify-between items-center mt-5">
         <div class="flex flex-col gap-0.5">
@@ -63,9 +61,10 @@ const addToCart = (): void => {
           <p class="font-bold text-lg md:text-xl">{{ formatPrice(sneaker.price) }}</p>
         </div>
         <button
+          :disabled="!selectedSize"
           aria-label="Adicionar ao carrinho"
-          class="h-12 w-12 bg-primary rounded-lg font-bold text-xl hover:bg-[#ff8555] duration-300 transition-all hover:rotate-90 hover:scale-110 cursor-pointer flex items-center justify-center"
-          @click="addToCart"
+          class="h-12 w-12 rounded-lg font-bold text-xl flex items-center justify-center transition-all duration-300 bg-primary hover:bg-[#ff8555] hover:rotate-90 hover:scale-110 disabled:bg-gray-600 disabled:cursor-not-allowed disabled:hover:rotate-0 disabled:hover:scale-100 disabled:opacity-50 cursor-pointer"
+          @click="cart.addToCart(sneaker, selectedSize!)"
         >
           +
         </button>

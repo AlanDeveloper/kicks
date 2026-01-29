@@ -7,6 +7,7 @@ export interface Sneaker {
   src: string
   originalPrice: number
   price: number
+  size: number[]
   category: Category
   flag?: Flag
 }
