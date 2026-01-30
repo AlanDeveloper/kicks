@@ -1,5 +1,6 @@
 import CartPage from '@/views/CartPage.vue'
 import HomePage from '@/views/HomePage.vue'
+import OrderPage from '@/views/OrderPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/cart',
       name: 'cart',
       component: () => CartPage,
+    },
+    {
+      path: '/order-success',
+      name: 'order-success',
+      component: () => OrderPage,
     },
   ],
   scrollBehavior(to) {

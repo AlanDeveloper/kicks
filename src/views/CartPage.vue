@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useCartStore } from '@/stores/CartStore'
 import { formatPrice } from '@/utils/formatPrice'
 
+const router = useRouter()
 const cartStore = useCartStore()
+
+const handleCheckout = () => {
+  cartStore.clearCart()
+  router.push('/order-success')
+}
 </script>
 
 <template>
@@ -133,6 +140,7 @@ const cartStore = useCartStore()
                 </div>
 
                 <button
+                  @click="handleCheckout"
                   class="w-full px-8 py-4 bg-primary text-white font-bold rounded-full text-lg transition-all duration-300 hover:bg-orange-600 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/50 active:scale-95 mb-4 cursor-pointer"
                 >
                   Finalizar Compra
@@ -157,6 +165,14 @@ const cartStore = useCartStore()
                   <div class="flex items-center gap-3 text-sm">
                     <span class="text-2xl">📦</span>
                     <span class="text-secondary-text">Entrega para todo Brasil</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-sm">
+                    <span class="text-2xl">🔄</span>
+                    <span class="text-secondary-text">Troca grátis em 30 dias</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-sm">
+                    <span class="text-2xl">💳</span>
+                    <span class="text-secondary-text">Parcelamento sem juros</span>
                   </div>
                 </div>
               </div>
