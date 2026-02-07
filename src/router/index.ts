@@ -1,6 +1,3 @@
-import CartPage from '@/views/CartPage.vue'
-import HomePage from '@/views/HomePage.vue'
-import OrderPage from '@/views/OrderPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -9,17 +6,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => HomePage,
+      component: () => import('@/views/HomePage.vue'),
     },
     {
       path: '/cart',
       name: 'cart',
-      component: () => CartPage,
+      component: () => import('@/views/CartPage.vue'),
     },
     {
       path: '/order-success',
       name: 'order-success',
-      component: () => OrderPage,
+      component: () => import('@/views/OrderPage.vue'),
     },
   ],
   scrollBehavior(to) {
