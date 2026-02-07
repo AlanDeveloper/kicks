@@ -8,9 +8,14 @@ COPY . .
 EXPOSE 5173
 CMD ["npm", "run", "dev"]
 
-FROM base AS production
+FROM base AS builder
 RUN npm ci
 COPY . .
 RUN npm run build
-EXPOSE 5173
-CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "5173"]
+
+# Ambiente de produção (VPS)
+FROM nginx:alpine AS production
+COPY --from=builder /var/www/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
