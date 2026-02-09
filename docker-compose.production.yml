@@ -1,8 +1,9 @@
 services:
   app:
-    container_name: kicks_prod
     image: ghcr.io/alandeveloper/kicks:latest
     restart: unless-stopped
+    mem_limit: 192m
+    cpus: 0.45
     networks:
       - traefik-network
     labels:
